@@ -1,4 +1,4 @@
-const QUERY_YOYAKU = 'subject:(<RESERVE MAIL TITLE>)'
+const QUERY_RESERVE = 'subject:(<RESERVE MAIL TITLE>)'
 const QUERY_CANCEL = 'subject:(<CANCEL MAIL TITLE>)'
 const LOCATION = '<LOCATION>'
 const TITLE = '<EVENT TITLE>'
@@ -7,8 +7,8 @@ const DATE_PREFIX = '<DATE PREFIX>'
 
 function main() {
   Logger.log("Reserve")
-  pickUpMessage(QUERY_YOYAKU, function (message) {
-    parseYoyaku(message);
+  pickUpMessage(QUERY_RESERVE, function (message) {
+    parseReserve(message);
   });
   Logger.log("Cancel")
   pickUpMessage(QUERY_CANCEL, function (message) {
@@ -68,7 +68,7 @@ function deleteEvent(year, month, dayOfMonth, startTimeHour, startTimeMinutes, e
   }
 }
 
-function parseYoyaku(message) {
+function parseReserve(message) {
   const strDate = message.getDate();
   const strMessage = message.getPlainBody();
 
